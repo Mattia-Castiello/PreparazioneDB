@@ -9,55 +9,55 @@
     {
       "width": 5472,
       "height": 3648,
-      "id": "001",
+      "id": 1,
       "file_name": "../../label-studio/data/media/upload/1/a10b3574-21_0105.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "002",
+      "id": 2,
       "file_name": "../../label-studio/data/media/upload/1/265a82b6-22_0074.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "003",
+      "id": 3,
       "file_name": "../../label-studio/data/media/upload/1/a5bfbe26-22_0134.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "004",
+      "id": 4,
       "file_name": "../../label-studio/data/media/upload/1/91afb6b9-23_0053.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "005",
+      "id": 5,
       "file_name": "../../label-studio/data/media/upload/1/c5be0c8f-26_0102.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "006",
+      "id": 6,
       "file_name": "../../label-studio/data/media/upload/1/aa87fb76-26_0141.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "007",
+      "id": 7,
       "file_name": "../../label-studio/data/media/upload/1/af372459-133_0350.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "008",
+      "id": 8,
       "file_name": "../../label-studio/data/media/upload/1/0bceee85-136_0001.jpg"
     },
     {
       "width": 5472,
       "height": 3648,
-      "id": "009",
+      "id": 9,
       "file_name": "../../label-studio/data/media/upload/1/439b8071-137_0014.jpg"
     }
   ],
@@ -67,11 +67,11 @@
       "name": "bugna"
     },
     {
-      "id": "001",
+      "id": 1,
       "name": "elemento arco"
     },
     {
-      "id": "002",
+      "id": 2,
       "name": "elemento cornice"
     }
   ],
