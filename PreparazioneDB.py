@@ -2,13 +2,12 @@ import os
 import json
 import pandas as pd
 from shapely.geometry import Polygon
-import matplotlib.pyplot as plt
-from PIL import Image
+
 
 # ====== CONFIGURAZIONE ======
 dir_json = '/Users/mattiacastiello/Desktop/tesi/code/PreparazioneDB/Filejson'
 xlsx_path = '/Users/mattiacastiello/Desktop/tesi/code/PreparazioneDB/ValutazioneAnnotazioni copia.xlsx'
-images_dir = '/Users/mattiacastiello/Desktop/tesi/code/PreparazioneDB/Images'  # cartella con le immagini
+images_dir = '/Users/mattiacastiello/Desktop/tesi/code/PreparazioneDB/Images' 
 output_dir = dir_json
 output_filename = 'merged_annotations.json'
 
@@ -187,35 +186,3 @@ os.makedirs(output_dir, exist_ok=True)
 with open(os.path.join(output_dir, output_filename), 'w') as f:
     json.dump({'images': final_images, 'categories': final_categories, 'annotations': final_annotations}, f, indent=2)
 debug('Merged annotations salvate correttamente')
-
-# ====== VISUALIZZAZIONE SEGMENTAZIONI ======
-# Carica il file JSON fuso
-data = json.load(open(os.path.join(output_dir, output_filename), 'r'))
-# Mappa id immagine -> nome file completo
-id2file = {img['id']: img['file_name'] for img in data['images']}
-# Raggruppa annotazioni per immagine
-anns_by_img = {}
-for ann in data['annotations']:
-    anns_by_img.setdefault(ann['image_id'], []).append(ann)
-
-# Per ogni immagine, disegna tutte le segmentazioni sovrapposte
-for img_id, anns in anns_by_img.items():
-    raw_fn = id2file[img_id]
-    base_fn = os.path.basename(raw_fn)
-    # estrai il nome reale (parte dopo il primo trattino)
-    real_fn = base_fn.split('-', 1)[-1] if '-' in base_fn else base_fn
-    img_path = os.path.join(images_dir, real_fn)
-    if not os.path.isfile(img_path):
-        debug(f"Immagine non trovata: {img_path}")
-        continue
-    img = Image.open(img_path).convert("RGB")
-    plt.figure(figsize=(8, 8))
-    plt.imshow(img)
-    for ann in anns:
-        for seg in ann.get('segmentation', []):
-            coords = [(seg[i], seg[i+1]) for i in range(0, len(seg), 2)]
-            xs, ys = zip(*coords)
-            plt.plot(xs + (xs[0],), ys + (ys[0],), linewidth=2)
-    plt.axis('off')
-    plt.title(f"{real_fn} - {len(anns)} segmentazioni")
-    plt.show()
